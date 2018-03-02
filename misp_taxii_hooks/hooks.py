@@ -182,6 +182,9 @@ def post_stix(manager, content_block, collection_ids, service_id):
                     
                 if source:
                     misp_event.add_tag("source:"+source)
+                    
+                for attribItems in misp_event.attributes:
+                    attribItems.distribution = distribution
                 
                 response = MISP.add_event(json.dumps(misp_event, cls=MISPEncode))
 
