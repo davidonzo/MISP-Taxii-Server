@@ -216,6 +216,7 @@ def post_stix(manager, content_block, collection_ids, service_id):
                     buildattribute.attributes.pop([x.value for x in buildattribute.attributes].index(attrib.value))
                 else:
                     log.info("%s is unique, we'll keep it", attrib.value)
+                    attrib.distribution = distribution
             
             if (len(buildattribute.attributes) > 0 ):
                 b64Pkg = base64.b64encode(package.to_xml()).decode("utf-8")
